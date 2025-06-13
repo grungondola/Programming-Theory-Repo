@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private PlayAreaManager playAreaManager;
     private MainManager mainManager;
 
+    [SerializeField]
+    private GameObject animatedFish;
+
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -21,14 +24,27 @@ public class PlayerController : MonoBehaviour
         playAreaManager = GameObject.Find("Play Area").GetComponent<PlayAreaManager>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!mainManager.IsGameOver)
         {
             var moveVector2 = moveAction.ReadValue<Vector2>();
             var moveVector3 = new Vector3(moveVector2.x, 0, moveVector2.y).normalized;
             gameObject.transform.Translate(speed * Time.deltaTime * moveVector3);
+
+            UpdateFishRotation(moveVector3);
         }
+    }
+
+    void UpdateFishRotation(Vector3 moveDirection)
+    {
+        var rotation = Quaternion.LookRotation(moveDirection);
+        if (moveDirection.x < 0)
+        {
+            rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 180);
+        }
+
+        animatedFish.transform.SetLocalPositionAndRotation(Vector3.zero, rotation);
     }
 
     void OnTriggerEnter(Collider other)

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 943371732178149052, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c61dfaee29b34944baa23cb61c73eee0, type: 2}
     - target: {fileID: 1384179914543026529, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
       propertyPath: m_Name
       value: SquirmyFish Variant
@@ -56,6 +60,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b4e23412fdfa2124193ad8dac92031e7, type: 2}
+    - target: {fileID: 7213466599593762935, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213466599593762935, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213466599593762935, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213466599593762935, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9105505188254782792, guid: 9b1c09168c0ca944eacc67e4f367b5c4, type: 3}
     m_RemovedGameObjects: []

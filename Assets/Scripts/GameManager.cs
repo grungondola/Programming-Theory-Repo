@@ -63,7 +63,11 @@ public class GameManager : MonoBehaviour
     // ABSTRACTION
     private string GetSaveFileName()
     {
-        return $"{Application.persistentDataPath}/savefile.json";
+        var filename = $"{Application.persistentDataPath}/savefile.json";
+
+        Debug.Log($"Save File Name: {filename}");
+
+        return filename;
     }
 
     [Serializable]
