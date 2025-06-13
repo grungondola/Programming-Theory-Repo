@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
     private string GetSaveFileName()
     {
         return $"{Application.persistentDataPath}/savefile.json";

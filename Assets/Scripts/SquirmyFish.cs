@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// INHERITANCE
 public class SquirmyFish : Fish
 {
     [SerializeField]
@@ -7,12 +8,14 @@ public class SquirmyFish : Fish
     private float rotationRate = 0;
     private float rotationUpdateDelay = 1;
 
+    // POLYMORPHISM
     protected override void Start()
     {
         base.Start();
         InvokeRepeating(nameof(UpdateRotation), rotationUpdateDelay, rotationUpdateDelay);
     }
 
+    // POLYMORPHISM
     protected override void FixedUpdate()
     {
         if (!mainManager.IsGameOver)

@@ -7,6 +7,7 @@ public class Fish : MonoBehaviour
     [SerializeField]
     private float baseSpeed = 5;
     private float speed = 5;
+    // ENCAPSULATION
     public float Size { get; private set; }
     [SerializeField]
     private TMP_Text sizeDisplay;

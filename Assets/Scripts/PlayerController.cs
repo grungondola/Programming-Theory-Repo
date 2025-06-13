@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
     private void UpdateSize(float size)
     {
         var score = size - 1;

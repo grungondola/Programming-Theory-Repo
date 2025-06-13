@@ -51,17 +51,20 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
     private GameObject SelectFishPrefab()
     {
         var fishIndex = Random.Range(0, FishPrefabs.Length);
         return FishPrefabs[fishIndex];
     }
 
+    // ABSTRACTION
     private float GetFishSize()
     {
         return Random.Range(minSize, maxSize);
     }
 
+    // ABSTRACTION
     private (Vector3 startPosition, Quaternion direction) GenerateVectorAndRotation(float size)
     {
         var startDeterminer = Random.Range(0, 4);

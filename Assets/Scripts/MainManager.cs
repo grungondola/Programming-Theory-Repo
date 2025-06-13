@@ -13,6 +13,7 @@ public class MainManager : MonoBehaviour
     private TMP_Text HighScoreDisplay;
 
     private float scorePoints = 0.0f;
+    // ENCAPSULATION
     public bool IsGameOver { get; private set; } = false;
     public GameObject gameOverText;
 
@@ -59,6 +60,7 @@ public class MainManager : MonoBehaviour
         ScoreDisplay.text = $"Score: {score:0.0}";
     }
 
+    // POLYMORPHISM
     private void UpdateHighScoreDisplay(string name, float score)
     {
         score = (float)Math.Round(score, 1);
