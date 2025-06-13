@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private float xRange = 19.9f;
+    private float rangeScale = 1.0f;
     [SerializeField]
     private float zRange = 19.9f;
     [SerializeField]
@@ -17,30 +18,37 @@ public class SpawnManager : MonoBehaviour
     private float maxSpawnDelay = 2.0f;
     private float spawnDelay = 1.0f;
 
+    private MainManager mainmanager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InvokeRepeating(nameof(SpawnFish), spawnDelay, spawnDelay);
+        mainmanager = GameObject.Find("Main Manager").GetComponent<MainManager>();
     }
 
     public void UpdateSizeRange(float playerSize)
     {
-        maxSize = playerSize * 2;
-        minSize = playerSize / 100;
+        maxSize = playerSize * 1.5f;
+        minSize = playerSize / 2;
+        rangeScale = 0.5f + playerSize / 2;
     }
 
     void SpawnFish()
     {
-        spawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+        if (!mainmanager.IsGameOver)
+        {
+            spawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
 
-        var size = GetFishSize();
-        var (startPosition, direction) = GenerateVectorAndRotation(size);
+            var size = GetFishSize();
+            var (startPosition, direction) = GenerateVectorAndRotation(size);
 
-        var fishPrefab = SelectFishPrefab();
-        fishPrefab.transform.localScale = new Vector3(size, 0.1f, size);
-        var fish = Instantiate(fishPrefab, startPosition, direction);
+            var fishPrefab = SelectFishPrefab();
+            fishPrefab.transform.localScale = new Vector3(size, 0.1f, size);
+            var fish = Instantiate(fishPrefab, startPosition, direction);
 
-        fish.GetComponent<Fish>().SetSize(size);
+            fish.GetComponent<Fish>().SetSize(size);
+        }
     }
 
     private GameObject SelectFishPrefab()
@@ -57,8 +65,8 @@ public class SpawnManager : MonoBehaviour
     private (Vector3 startPosition, Quaternion direction) GenerateVectorAndRotation(float size)
     {
         var startDeterminer = Random.Range(0, 4);
-        var xRange = this.xRange - size / 2;
-        var zRange = this.zRange - size / 2;
+        var xRange = (this.xRange * rangeScale) - size / 2;
+        var zRange = (this.zRange * rangeScale) - size / 2;
 
         float xStartPos, zStartPos;
         switch (startDeterminer)
