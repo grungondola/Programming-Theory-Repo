@@ -32,7 +32,10 @@ public class PlayerController : MonoBehaviour
             var moveVector3 = new Vector3(moveVector2.x, 0, moveVector2.y).normalized;
             gameObject.transform.Translate(speed * Time.deltaTime * moveVector3);
 
-            UpdateFishRotation(moveVector3);
+            if (moveVector3 != Vector3.zero)
+            {
+                UpdateFishRotation(moveVector3);
+            }
         }
     }
 
